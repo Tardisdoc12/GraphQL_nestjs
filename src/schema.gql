@@ -1,0 +1,82 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Satellite {
+  """The name of the satellite"""
+  name: String!
+
+  """The slug of the planet"""
+  slug: String
+
+  """The distance of the satellite from its center"""
+  radius: Int!
+
+  """The planet the satellite orbits"""
+  planet: Planet!
+}
+
+type Planet {
+  """The name of the planet"""
+  name: String!
+
+  """The slug of the planet"""
+  slug: String
+
+  """The distance of the planet from the sun"""
+  radius: Int!
+
+  """The satellites of the planet"""
+  satellites: [Satellite!]!
+  satellite: [Satellite!]!
+}
+
+type Query {
+  findPlanet(slug: String!): Planet!
+  findPlanets: [Planet!]!
+  findSatellite(slug: String!): Satellite!
+}
+
+type Mutation {
+  createPlanet(CreatePlanetData: CreatePlanetInput!): Planet!
+  deletePlanet(slug: String!): Planet!
+  updatePlanet(UpdatePlanetData: UpdatePlanetInput!): Planet!
+  createSatellite(CreateSatelliteData: CreateSatelliteInput!): Satellite!
+  deleteSatellite(slug: String!): Satellite!
+}
+
+input CreatePlanetInput {
+  """The name of the planet"""
+  name: String!
+
+  """The slug of the planet"""
+  slug: String
+
+  """The distance of the planet from the sun"""
+  radius: Int!
+}
+
+input UpdatePlanetInput {
+  """The name of the planet"""
+  name: String!
+
+  """The slug of the planet"""
+  slug: String
+
+  """The distance of the planet from the sun"""
+  radius: Float
+}
+
+input CreateSatelliteInput {
+  """The name of the Satellite"""
+  name: String!
+
+  """The slug of the satellite"""
+  slug: String
+
+  """The distance of the satellite from its center"""
+  radius: Int!
+
+  """The planet the satellite orbits"""
+  planet: String!
+}
